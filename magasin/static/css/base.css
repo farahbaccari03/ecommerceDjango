@@ -1,0 +1,140 @@
+#conteneur
+{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+/* Ajoutez ces styles CSS dans votre fichier CSS */
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .product-card {
+    width: 300px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.1);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .product-details {
+    padding: 10px;
+  }
+  
+  .product-details p {
+    margin: 5px 0;
+  }
+  
+  /* Ajoutez des styles pour afficher les détails de l'article en grand */
+  .product-card:hover .product-details {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .product-card:hover .product-details p {
+    margin: 10px 0;
+  }
+  
+/* CSS pour la liste des fournisseurs */
+#fournisseur .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+#fournisseur .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#fournisseur .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#fournisseur .card-text {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+#fournisseur .btn {
+    margin-top: 10px;
+}
+
+#fournisseur hr {
+    border-color: #ccc;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+#fournisseur .card-body {
+    position: relative;
+}
+
+#fournisseur .edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #28a745; /* couleur verte */
+}
+
+#fournisseur .delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: #dc3545; /* couleur rouge */
+}
+/* CSS pour la liste des commandes */
+
+#commandes .command-card {
+    width: 300px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+#commandes .command-card:hover {
+    transform: scale(1.1);
+}
+
+#commandes .command-details {
+    padding: 10px;
+}
+
+#commandes .command-details p {
+    margin: 5px 0;
+}
+
+#commandes .action-buttons {
+    margin-top: 10px;
+}
+
+#commandes .action-buttons a {
+    margin-right: 5px;
+}

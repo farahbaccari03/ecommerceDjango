@@ -1,0 +1,22 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Liste des commandes</h1>
+    <div id="commandes" class="row">
+        {% for commande in commandes %}
+        <div class="col-lg-4">
+            <div class="command-card" id="{{ commande.id }}">
+                <div class="command-details">
+                    <p><strong>Date de commande:</strong> {{ commande.dateCde }}</p>
+                    <p><strong>Total:</strong> {{ commande.totalCde }}</p>
+                </div>
+                <div class="action-buttons">
+                    <a href="{% url 'detail_commande' commande.id %}" class="btn btn-primary">Voir les détails</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+    <h1>Liste des catégories</h1>
+    <ul>
+        {% for categorie in categories %}
+            <li>{{ categorie.libelle }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

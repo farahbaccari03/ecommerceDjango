@@ -1,0 +1,22 @@
+{% extends 'magasin/base.html' %}
+{% block title %} {{commande.libellé}} {% endblock %}
+
+{% block content %}
+
+
+  <div class="card" style="width: 400px;margin: 10px; margin-left: 550px;" >
+   <div class="card-body">
+       <h5 class="card-title">Commande</h5>
+       <hr class="dropdown-divider">
+       <p class="card-text"><b>Date : {{commande.dateCde}}</b></p>
+       <p class="card-text"><b>Nom du client:</b> {{commande.nom_client}}</p>
+       <p class="card-text"><b>Adresse de livraison:</b> {{commande.adresse_livraison}}</p>                 
+       <p class="card-text">Total Commande : {{commande.totalCde}}</p>
+       {% for produit in commande.produits.all %}
+       <p class="card-text"> Produits : {{produit.libellé}} <br>
+            Prix : {{produit.prix}}</p>
+       {% endfor %}
+       <a href="{% url 'ListCommande' %}" class="btn btn-secondary">Retour au Catalogue</a>
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>Liste des produits</h1>
+
+
+          <div class="row col-12 ml-2 mr-2" style="text-align:center; font-weight:bolder; font-size:30px; ">
+            {% for produit in produits %}
+            <div  style="height:200px; width:250px;margin-top: 60px; margin-left:180px;border: 50% 20% / 10% 40%; background-color: rgb(0, 0, 0);   border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 0 40px #000;
+            transform: translateY(0) rotate(4deg) translateX(25px)">
+            <a href="{% url 'ajouter_au_panier' produit.id %}" class="nav-link" style="color: white;">
+              <td>{{ produit.libelle }}
+              <td>{{ produit.prix }}</td>
+              <td>{{ produit.stock }}</td>
+              
+              
+                   </a>
+                   
+            </div>
+            
+            {% endfor %}
+      
+       
+          </div>
+      
+{% endblock %}

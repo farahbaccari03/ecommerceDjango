@@ -1,0 +1,30 @@
+{% extends 'magasin/base.html' %}
+{% block title %} TtMessage de messages {% endblock %}
+{% block content %}
+<!-- body -->
+<div class="container-fluid mt-3">
+    <div class="row-9">
+     
+        <div id='messages' class="col-lg-9 mx-auto" style="margin:5px;">
+            <div class="row mx-auto">
+                {% for message in messages %}
+                 <div class="card" id={{message.id}} style="background-color: rgb(219, 219, 219);width:350px;border-radius: 50% 20% / 10% 40%;margin:5px;">
+                    <div id={{message.id}} style="margin:5px;">
+    
+                            <div class="card-body" >
+                            
+                        <p class="card-text"><b>{{message.nom}}</b></p>
+                        <p class="card-text">{{message.email}}</p>
+                        <div style="width: 350px;">
+                        <a href="{% url 'detail_message' msg_id=message.id %}" class="btn btn-primary">Voir Message</a>
+                      <a href="{% url 'delete_message' message.id %}" class="btn btn-danger" >Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

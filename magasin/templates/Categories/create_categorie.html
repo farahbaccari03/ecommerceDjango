@@ -1,0 +1,11 @@
+{% extends 'magasin/base.html' %}
+{% block content %}
+<div class="col-md-12 text-center">
+<h2>Manip Categorie ...... </h2>
+</div>
+<form method='POST' class="post-form" style="margin-left: 40px;" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-dark">Enregistrer</button>
+</form>
+{% endblock %}

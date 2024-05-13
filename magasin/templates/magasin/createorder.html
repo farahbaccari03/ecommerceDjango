@@ -1,0 +1,58 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  {% if confirmation %}
+    <h2>Confirmation de commande</h2>
+    <p>Client : {{ client.name }}</p>
+    <h3>Produits sélectionnés :</h3>
+    <ul>
+      {% for product in selected_products %}
+        <li>{{ product.name }} - {{ product.price }}</li>
+      {% endfor %}
+    </ul>
+    <h3>Total : {{ total_price }}</h3>
+    <p>Date de commande : {{ order_date }}</p>
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      <label for="client">Client :</label>
+      <select name="client" id="client">
+        {% for client in clients %}
+          <option value="{{ client.id }}">{{ client.name }}</option>
+        {% endfor %}
+      </select>
+      <hr>
+      <h3>Produits :</h3>
+      {% for product in products %}
+        <label>
+          <input type="checkbox" name="products" value="{{ product.id }}">
+          {{ product.name }} - {{ product.price }}
+        </label>
+        <br>
+      {% endfor %}
+      <hr>
+      <button type="submit">Commander</button>
+    </form>
+    <p id="total-price" style="display: none;">Total : </p>
+  {% endif %}
+{% endblock %}
+
+<script>
+  // JavaScript pour afficher le prix total une fois les produits sélectionnés
+  const productsCheckbox = document.querySelectorAll('input[type="checkbox"]');
+  const totalPriceParagraph = document.getElementById('total-price');
+
+  productsCheckbox.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      let totalPrice = 0;
+      productsCheckbox.forEach(checkbox => {
+        if (checkbox.checked) {
+          const productPrice = parseFloat(checkbox.nextElementSibling.textContent.split(' - ')[1]);
+          totalPrice += productPrice;
+        }
+      });
+      totalPriceParagraph.textContent = `Total : ${totalPrice.toFixed(2)} €`;
+      totalPriceParagraph.style.display = 'block';
+    });
+  });
+</script>

@@ -1,0 +1,18 @@
+{% extends 'magasin/base.html' %}
+{% block title %} {{message.nom}} {% endblock %}
+
+{% block content %}
+
+
+  <div class="card" style="width: 400px;margin: 10px; margin-left: 550px;" >
+   <div class="card-body">
+       <h5 class="card-title">Message Client</h5>
+       <hr class="dropdown-divider">
+        <p class="card-text">Nom: <b>{{message.nom}}</b></p>
+       <p class="card-text">Email: <b>{{message.email}}</b></p>
+       <p class="card-text">Message: {{message.message}}</p>
+   
+       <a href="{% url 'TtMessage' %}" class="btn btn-secondary">Retour au Messages</a>
+   </div>
+</div>
+{% endblock %}

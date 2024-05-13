@@ -1,0 +1,10 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>Passer une commande</h1>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Confirmer la commande</button>
+    <a href="{% url 'contenu_panier' %}" class="btn btn-primary">Retour au panier</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <title>Custom Coding</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href="/static/css/acceuil.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href="/static/css/base.css">
+</head>
+<body>
+    <header>
+        <h3 style="color: black;">E_Commerce</h3>
+        <nav>
+            <a style="color: black;" class="nav-link" href="{% url 'admin:index' %}">Administration</a>
+            <li class="nav-item dropdown">
+                <a style="color: black;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    catalogue
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'index'%}">Ajout Produit</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'Catalogue'%}">Catalogue</a></li>
+                </ul>
+            </li>
+            <li class="nav-item ">
+                <a style="color: black;" class="nav-link" href="{% url 'contenu_panier' %}">Panier</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a style="color: black;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    List Fournisseurs
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'Fournisseur' %}">Ajout Fournisseur</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'fournisseurs' %}">Fournisseurs</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a style="color: black;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    List Des commandes
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'create_commande' %}">Ajout Commande</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'ListCommande' %}">Commande</a></li>
+                </ul>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a style="color: black;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    List Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'create_categorie' %}">Ajout Categorie</a></li>
+                    <li><a class="dropdown-item" style="color: black;" href="{% url 'ListCategorie' %}">Categories</a></li>
+                </ul>
+            </li>
+            <li class="nav-item ">
+                <a style="color: black;" class="nav-link" href="{% url 'TtMessage' %}">Message</a>
+            </li>
+            {% endif %}
+            <li class="nav-item ">
+                <a style="color: black;" class="nav-link" href="{% url 'message' %}">Contact</a>
+            </li>
+            <div>
+              <ul class="navbar-nav" style="margin-left: 0px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                  {% if user.is_authenticated %}
+                  <li class="nav-item dropdown">
+                      <a style="color: black;" class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ user }}
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" style="color: black;" href="{% url 'Logout' %}">Déconnexion</a></li>
+                      </ul>
+                  </li>
+                  {% else %}
+                  <li class="nav-item active">
+                      <a style="color: black;" class="nav-link" href="{% url 'Login' %}">Connexion</a>
+                  </li>
+                  <li class="nav-item active">
+                      <a style="color: black;" class="nav-link" href="{% url 'register' %}">Inscription</a>
+                  </li>
+                  {% endif %}
+              </ul>
+          </div>
+          
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="background-image" style="background-image: url(https://www.informaticscommerce.com/wp-content/uploads/2019/04/eCommerce_Developer.jpg)"></div>
+        <div class="hero-content-area">
+            <h1>Welcome to our website</h1>
+            <a href="{% url 'message' %}" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <section class="destinations">
+        <h3 class="title">Rest information will go here:</h3>
+        <hr>
+    </section>
+
+    <section class="contact">
+        <h3 class="title">Join our newsletter</h3>
+        <p>Information will go here(if any)</p>
+        <hr>
+        <form>
+            <input type="email" placeholder="Email">
+            <a href="#" class="btn">Subscribe now</a>
+        </form>
+    </section>
+
+    <footer>
+        <ul>
+            <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-snapchat-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
+            <li><a href="#"><i class="fa fa-github-square"></i></a></li>
+        </ul>
+        <p>No attribution required. you can remove this footer.</p>
+    </footer>
+</body>
+</html>

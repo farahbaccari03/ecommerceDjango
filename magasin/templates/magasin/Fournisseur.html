@@ -1,0 +1,15 @@
+{% extends 'magasin/base.html' %}
+{% block content %}
+<div class="form-group text-center" style="margin-top: 20px;" style="margin-bottom: 50px;">
+    <a class="btn btn-dark">
+     Manupultion Fournisseur
+    </a>
+</div>
+<form method='POST' class="post-form" style="margin-left: px;">
+{% csrf_token %}
+{{ form.as_p }}
+<div class="form-group text-center">
+    <input type="submit" value="Enregistrer" class="btn btn-dark" >
+ </form>
+</form>
+{% endblock %}

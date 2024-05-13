@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>
+{% block title %} {% endblock %}
+</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/base.css'%}">
+<!-- Ajoutez cette ligne dans le <head> de votre fichier base.html ou dans votre modèle principal -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-fLXR+/N5TPEzUyioEO5PQvGk5zjP3r2urz5f3j0bX2JqVuMJpVlRoUjzLnFkzCPsPeR5g/FA6ezL3Sg3+vrCwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% block styles %} {% endblock %}
+</head>
+<body>
+    
+      
+        
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(253, 255, 255) ;text-align: center ;color: black; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; border-style: solid;
+  border-width: 1px;font-size: 15px;padding-bottom: 1px;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="{% url 'Login' %}">E Commerce</a>
+                  <a class="nav-link" href="{% url 'admin:index' %}">Administration</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      catalogue
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      {% if user.is_authenticated %}
+                      <li><a class="dropdown-item" href="{% url 'index'%}">Ajout Produit</a></li>
+                      {% endif %}
+                      <li><a class="dropdown-item" href="{% url 'Catalogue'%}">Catalogue</a></li>
+                    </ul>
+                    </li>
+                  
+                  <li class="nav-item ">
+                    <a class="nav-link" href="{% url 'contenu_panier' %}">Panier</a>
+                    </li>
+                 
+      
+                  
+
+             <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						List Fournisseurs
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						{% if user.is_authenticated %}
+					  <li><a class="dropdown-item" href="{% url 'Fournisseur' %}">Ajout Fournisseur</a></li>
+					  {% endif %}
+					  <li><a class="dropdown-item" href="{% url 'fournisseurs' %}">Fournisseurs</a></li>
+					</ul>
+				  </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              List Des commandes
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if user.is_authenticated %}
+              <li><a class="dropdown-item" href="{% url 'create_commande' %}">Ajout Commande</a></li>
+              {% endif %}
+              <li><a class="dropdown-item" href="{% url 'ListCommande' %}">Commande</a></li>
+            </ul>
+            </li>
+				  {% if user.is_authenticated %}
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						List Categories
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						
+					  <li><a class="dropdown-item" href="{% url 'create_categorie' %}">Ajout Categorie</a></li>
+					 
+					  <li><a class="dropdown-item" href="{% url 'ListCategorie' %}">Categories</a></li>
+     
+           
+					</ul>
+
+
+          
+			    <li class="nav-item ">
+            {% if user.is_superuser %}
+				<a class="nav-link" href="{% url 'TtMessage' %}">Message</a>
+        {% endif %}
+			  </li>
+
+
+
+
+<li class="nav-item ">
+				<a class="nav-link" href="{% url 'message' %}">Contact Us</a>
+			  </li>
+				  </li>
+    
+       
+				
+				  {% endif %}
+         
+          <ul>
+            <form class="d-flex" method="GET" action="{% url 'search' %}"style="margin-left: 280px;">
+              <input type="text" name="q" class="form-control me-2"     placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit">Search</button>
+            </form>
+          </ul>
+			</ul>
+        
+                 
+                  <div> <ul class="navbar-nav " style="margin-right: 5px;" >
+				
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown" >
+                      <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{user}}
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                       
+                       <li><a class="dropdown-item"    href="{% url 'logout' %}">Déconnexion</a></li></ul>
+                      </li>
+                      {% else %}
+                    <li class="nav-item active">
+                      <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item">Déconnexion</button>
+                      </form>
+                                          </li>
+                    <li class="nav-item active">
+                    <a class="nav-link"  href="{% url 'register' %}">Inscription</a>
+                    </li>
+                    {% endif %}
+                    </ul>
+                  </div>
+                   
+                   
+                </div>
+              </div>
+              
+            </div>
+            
+            
+          </nav>
+          
+{% block content %} {% endblock %}
+
+
+</body>
+</html>

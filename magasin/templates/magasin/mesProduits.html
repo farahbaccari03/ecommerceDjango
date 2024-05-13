@@ -1,0 +1,29 @@
+{% extends 'magasin/base.html' %}
+{% block title %} Catalogue de produits {% endblock %}
+{% block content %}
+<!-- body -->
+<div class="container-fluid mt-3">
+    <div class="row-9">
+        <div id='products' class="col-lg-9 mx-auto product-container">
+            <div class="row mx-auto">
+                {% for product in products %}
+                <div class="product-card" id={{product.id}}>
+                    <img class="product-image" src="/media/{{product.img}}" alt="{{product.libelle}}">
+                    <div class="product-details">
+                        <p><b>{{product.libelle}}</b></p>
+                        <p>{{product.prix}}</p>
+                        <p>{{product.description}}</p>
+                        {% if user.is_superuser %}
+                        <div class="product-actions">
+                            <a href="{% url 'modifier_produit' product.id %}" class="action-icon"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'supprimer_produit' product.id %}" class="action-icon"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

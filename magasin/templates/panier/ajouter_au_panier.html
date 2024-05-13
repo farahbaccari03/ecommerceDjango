@@ -1,0 +1,11 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>{{ produit.libelle }}</h1>
+  <p>Prix : {{ produit.prix }} euros</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+  </form>
+{% endblock %}

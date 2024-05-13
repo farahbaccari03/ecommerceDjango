@@ -1,0 +1,14 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>Modifier le contenu du panier</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ formset.management_form }}
+    <table>
+      {{ formset.as_table }}
+    </table>
+    <input type="submit" value="Enregistrer les modifications">
+  </form>
+{% endblock %}

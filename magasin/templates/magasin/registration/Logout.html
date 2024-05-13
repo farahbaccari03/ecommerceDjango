@@ -1,0 +1,17 @@
+{% extends "magasin/base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Vous êtes déconnecté.</h2>
+            <p class="card-text">Veuillez vous connecter pour accéder à votre compte.</p>
+            <a href="{% url 'Login' %}" class="btn btn-primary">Se connecter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'magasin/base.html' %}
+{% load static %}
+{% block content %}
+<form method='POST' class="post-form" >
+{% csrf_token %}
+<div class="container-fluid mt-3">
+    <div class="row-9" >
+        <!-- all products -->
+        <div  id='fournisseur' class="col-lg-9 mx-auto" >
+            <div class="row mx-auto" >
+                {% for fournisseur in nouvFournisseur %}
+                <div class="card" id={{fournisseur.id}} style="width: 240px;border:black solid 1px;margin:5px;">
+                     <hr class="dropdown-divider">
+                    <div class="card-body">
+                        <h5 class="card-title">Fournisseur</h5>
+                         <p class="card-text">Nom: <b>{{fournisseur.nom}}</b></p>
+                        <p class="card-text">Adresse: <b>{{fournisseur.adresse}}</b></p>
+                        <p class="card-text">Email: {{fournisseur.email}}</p>
+                        <p class="card-text">Tel: {{fournisseur.telephone}}</p>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+ </form> 
+</div> {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>Contenu du panier</h1>
+  {% if contenu %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix unitaire</th>
+          <th>Prix total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in contenu %}
+          <tr>
+            <td>{{ item.produit.libelle }}</td>
+            <td>{{ item.quantite }}</td>
+            <td>{{ item.prix_unitaire }} DT</td>
+            <td>{{ item.prix_total }} DT</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total</td>
+          <td>{{ total }} euros</td>
+        </tr>
+      </tfoot>
+    </table>
+    <a href="{% url 'vider_panier' %}" class="btn btn-danger">Vider le panier</a>
+    <a href="{% url 'liste_produits' %}" class="btn btn-primary">Continuer mes achats</a>
+    <a href="{% url 'passer_commande' %}" class="btn btn-success">Passer la commande</a>
+  {% else %}
+    <p>Votre panier est vide.</p>
+    <a href="{% url 'liste_produits' %}" class="btn btn-primary">Continuer mes achats</a>
+  {% endif %}
+{% endblock %}

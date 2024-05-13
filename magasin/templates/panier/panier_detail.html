@@ -1,0 +1,44 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>Panier</h1>
+  {% if panier %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Produit</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Prix unitaire</th>
+          <th scope="col">Total</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in panier %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ item.produit.libelle }}</td>
+            <td>{{ item.quantite }}</td>
+            <td>{{ item.produit.prix }}</td>
+            <td>{{ item.total_produit }}</td>
+            <td>
+              <form action="{% url 'supprimer_du_panier' item.produit.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="4"></td>
+          <td><strong>Total:</strong></td>
+          <td>{{ total_panier }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="{% url 'passer_commande' %}" class="btn btn-primary">Commander</a>
+  {% else %}
+    <p>Votre panier est vide.</p>
+  {% endif %}
+{% endblock %}

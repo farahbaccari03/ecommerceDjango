@@ -1,0 +1,36 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+  <h1>Liste des paniers</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Utilisateur</th>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for panier in paniers %}
+        <tr>
+          <td>{{ panier.utilisateur.username }}</td>
+          <td>{{ panier.produit.libelle }}</td>
+          <td>{{ panier.quantite }}</td>
+          
+          <td>{{ panier.status }}</td>
+          <td>
+            <a href="{% url 'edit_panier' panier.id %}" class="btn btn-secondary btn-sm">Editer</a>
+
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">Aucun panier trouvé</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
